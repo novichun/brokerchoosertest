@@ -25,7 +25,7 @@ public function __invoke(): View
     
     return view('welcome')->with('top3', $repo->getBrokers()->sortByDesc('overallScore')->slice(0, 3))
                           ->with('stock', $repo->getBrokers()->sortByDesc('overallScore')->whereIn('brokerType', ['Stock']))
-                          ->with('brokers', $repo->getBrokers()->sortByDesc('overallScore'))
+                          ->with('inactivity', $repo->getBrokers()->sortByDesc('overallScore')->whereNotIn('hasInactivityFee', ['false']))
     ;
 
 }
