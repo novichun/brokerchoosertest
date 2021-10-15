@@ -20,9 +20,13 @@ class MainPageController extends BaseController
 public function __invoke(): View
 {
     $repo = new BrokerRepository();
+
+   
     
-    
-    return view('welcome')->with('brokers', $repo->getBrokers()->sortByDesc('overallScore')->slice(0, 3));
+    return view('welcome')->with('top3', $repo->getBrokers()->sortByDesc('overallScore')->slice(0, 3))
+                          ->with('stock', $repo->getBrokers()->sortByDesc('overallScore')->whereIn('brokerType', ['Stock']))
+                          ->with('brokers', $repo->getBrokers()->sortByDesc('overallScore'))
+    ;
 
 }
 
