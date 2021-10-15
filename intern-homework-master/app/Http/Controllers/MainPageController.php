@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Broker;
+use App\Repositories\BrokerRepository;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -14,13 +15,21 @@ class MainPageController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function __invoke(): View
-    {
-        return view('welcome', ['brokers' => collect([
-            new Broker('Broker 1', 'Stock', 4.5, false, Carbon::now()),
-            new Broker('Broker 2', 'Stock', 4.1, false, Carbon::now()),
-            new Broker('Broker 3', 'Stock', 3.7, false, Carbon::now())
-        ])]);
-      
-    }
+    
+
+public function __invoke(): View
+{
+    $repo = new BrokerRepository();
+    
+    
+    return view('welcome')->with('brokers', $repo->getBrokers()->sortByDesc('overallScore')->slice(0, 3));
+
+}
+
+
+
+  
+ 
+  
+
 }

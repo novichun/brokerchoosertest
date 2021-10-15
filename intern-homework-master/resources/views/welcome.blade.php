@@ -19,5 +19,6 @@
                 <x-broker-list title="Brokers with no inactivity fees" :brokers="$brokers" />
             </div>
         </main>
+       
     </body>
 </html>
