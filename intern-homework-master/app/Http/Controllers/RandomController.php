@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Http;
 class RandomController extends MainPageController
 {
     public function index(){
-            return 'Itt lesz az Api';
+        $repo = new BrokerRepository();
+        $randomcar = $repo->getBrokers()->random();
+        return response()->json($randomcar);
     }
 }

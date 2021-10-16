@@ -13,6 +13,7 @@
     <body>
         <main>
             <h1>Broker lists</h1>
+            <a href="/random">Random Broker (Click Me)</a>
             <div class="broker-list-container">
                 <x-broker-list title="Top 3 brokers in 2020" :brokers="$top3" />
                 <x-broker-list title="All stock brokers" :brokers="$stock" />
