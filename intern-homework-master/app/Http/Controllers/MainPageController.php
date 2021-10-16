@@ -11,6 +11,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\View\View;
 
+
 class MainPageController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -23,9 +24,20 @@ public function __invoke(): View
 
    
     
-    return view('welcome')->with('top3', $repo->getBrokers()->sortByDesc('overallScore')->slice(0, 3))
-                          ->with('stock', $repo->getBrokers()->sortByDesc('overallScore')->whereIn('brokerType', ['Stock']))
-                          ->with('inactivity', $repo->getBrokers()->sortByDesc('overallScore')->whereNotIn('hasInactivityFee', ['false']))
+    return view('welcome')->with('top3', $repo->getBrokers()
+                         ->filter(fn ($repo) =>Carbon::parse($repo->reviewDate)->year === 2020)
+                          ->sortByDesc('overallScore')
+                          ->slice(0, 3))
+                        
+                          ->with('stock', $repo
+                          ->getBrokers()
+                          ->sortByDesc('overallScore')
+                          ->whereIn('brokerType', ['Stock']))
+
+                          ->with('inactivity', $repo
+                          ->getBrokers()
+                          ->sortByDesc('overallScore')
+                          ->whereNotIn('hasInactivityFee', ['false']))
     ;
 
 }
