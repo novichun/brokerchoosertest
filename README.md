@@ -5,7 +5,7 @@
 
 ## BrokerChooser Homework Solution
 
----
+
 
 ## Brokerek kilistázása
 
@@ -19,7 +19,7 @@
 
   
 
-<p  align="right" style="color:gray; text-decoration: underline; font-weight:700;" >Novák Dániel</p>
+<p  align="right" style="color:gray;" >Novák Dániel</p>
 
   
 
