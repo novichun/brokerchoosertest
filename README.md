@@ -5,15 +5,21 @@
 
 ## BrokerChooser Homework Solution
 
-####Brokerek kilistázása
+---
+
+## Brokerek kilistázása
+
 <p  align="center"><img  src="img/brokers.png"  ></p>
-####Random Broker JSON
+
+## Random Broker JSON
+
 <p  align="center"><img  src="img/random.png"  ></p>
+
 
 
   
 
-#####<p  align="right" style="color:gray; text-decoration: underline;" >Novák Dániel</p>
+<p  align="right" style="color:gray; text-decoration: underline; font-weight:700;" >Novák Dániel</p>
 
   
 
